@@ -1,0 +1,8 @@
+.bg-image-hr {
+    background-image: url("images/view.jpg");
+    background-size: cover;
+}
+
+.nav-logo {
+    width: 32px;
+}

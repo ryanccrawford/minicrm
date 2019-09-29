@@ -77,3 +77,4 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 Before saveing the above to your .env file, replace the MySQL database username and password with your own.
 
+Sorry will finish documentation when time is avail...
