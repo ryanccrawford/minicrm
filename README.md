@@ -22,7 +22,7 @@ $ cd minicrm
 Next create an .env file 
 
 ```
-touch .env
+$touch .env
 ```
 
 Then copy and paste this to the .env you just created
@@ -75,6 +75,6 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 ```
 
-Before saveing the above to your .env file, replace the MySQL database username and password with your own.
+Before saving the above to your .env file, replace the MySQL database username and password with your own.
 
 Sorry will finish documentation when time is avail...
