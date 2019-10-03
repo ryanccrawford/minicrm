@@ -1,34 +1,33 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\User;
+
 class UsersTableSeeder extends Seeder
 {
     /**
-     * Seed with Admin and Manager User Acounts database seeds.
+     * Seed with Admin and Manager User Acounts
      *
      * @return void
      */
     public function run()
     {
         //Create an Admin User Account
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Admin',
             'email' => 'admin@site.com',
             'password' => bcrypt('password'),
-            'type' => 'admin',
-            
+            'remember_token' => str_random(10)
+
         ]);
 
 
         //Create a Manager User Acccount
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Manager',
             'email' => 'manager@site.com',
             'password' => bcrypt('password'),
-            'type' => 'manager'
+            'remember_token' => str_random(10)
         ]);
-
-        
     }
 }
