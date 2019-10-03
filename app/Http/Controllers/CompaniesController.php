@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
+use App\Http\Requests\CompanyCreateRequest;
+use App\Http\Requests\CompanyLogoUploadRequest;
+use App\Http\Requests\CompanyUpdateRequest;
 use Illuminate\Http\Request;
+use Storage;
 
 class CompaniesController extends Controller
 {
@@ -13,7 +18,11 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::where(function ($query) {
+            $query->where('name', 'like', '%' . request('q') . '%');
+        })->paginate();
+
+        return view('companies.index', compact('companies'));
     }
 
     /**
@@ -23,62 +32,92 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', new Company);
+
+        return view('companies.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CompanyCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyCreateRequest $request)
     {
-        //
+        $newCompany = $request->validated();
+        $newCompany['user_id'] = auth()->id();
+
+        $company = Company::create($newCompany);
+
+        return redirect()->route('companies.show', $company);
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified company.
      *
-     * @param  int  $id
+     * @param \App\Company $company
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Company $company)
     {
-        //
+        $employees = $company->employees()->where(function ($query) {
+            $searchQuery = request('q');
+            $query->where('first_name', 'like', '%' . $searchQuery . '%');
+            $query->orWhere('last_name', 'like', '%' . $searchQuery . '%');
+        })->paginate();
+
+        return view('companies.show', compact('company', 'employees'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Company $company)
     {
-        //
+        $this->authorize('update', $company);
+
+        return view('companies.edit', compact('company'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\CompanyUpdateRequest $request
+     * @param  \App\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyUpdateRequest $request, Company $company)
     {
-        //
+        $company->update($request->validated());
+
+        return redirect()->route('companies.show', $company);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Company $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Company $company)
     {
-        //
+        $this->authorize('delete', $company);
+
+        $this->validate(request(), [
+            'company_id' => 'required',
+        ]);
+
+        $routeParam = request()->only('page', 'q');
+
+        if (request('company_id') == $company->id && $company->delete()) {
+            return redirect()->route('companies.index', $routeParam);
+        }
+
+        return back();
     }
 }
