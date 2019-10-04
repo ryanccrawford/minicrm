@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * Employee attributes.
      *
      * @var array
      */
@@ -23,6 +23,7 @@ class Employee extends Model
         'user_id'
     ];
 
+    //Pagnation Per Page
     protected $perPage = 10;
 
     public function creator()

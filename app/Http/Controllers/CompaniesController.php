@@ -120,4 +120,26 @@ class CompaniesController extends Controller
 
         return back();
     }
+
+    /**
+     * Company logo upload action.
+     *
+     * @param \App\Http\Requests\CompanyLogoUploadRequest $request
+     * @param \App\Company                                $company
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logoUpload(CompanyLogoUploadRequest $request, Company $company)
+    {
+        $disk = env('APP_ENV') == 'testing' ? 'avatars' : 'public';
+
+        if (Storage::disk($disk)->exists($company->logo)) {
+            Storage::disk($disk)->delete($company->logo);
+        }
+
+        $company->logo = $request->logo->store('', $disk);
+        $company->save();
+
+        return back();
+    }
 }

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class EmployeeCreateRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Can user do this.
      *
      * @return bool
      */
@@ -18,7 +18,7 @@ class EmployeeCreateRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Validation Rules Go here.
      *
      * @return array
      */

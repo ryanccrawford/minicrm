@@ -26,8 +26,8 @@ class CompanyCreateRequest extends FormRequest
     {
         return [
             'name'    => 'required',
-            'email'   => 'required|email|max:255',
-            'website' => 'nullable|url|max:255'
+            'email'   => 'required|email',
+            'website' => 'nullable|url'
         ];
     }
 }

@@ -14,7 +14,13 @@ class Company extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'logo', 'website', 'user_id'];
+    protected $fillable = [
+        'name',
+        'email',
+        'logo',
+        'website',
+        'user_id'
+    ];
 
     protected $perPage = 10;
 
