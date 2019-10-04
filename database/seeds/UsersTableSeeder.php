@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@site.com',
             'password' => bcrypt('password'),
-            'remember_token' => str_random(10)
+            'remember_token' => null
 
         ]);
 
@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Manager',
             'email' => 'manager@site.com',
             'password' => bcrypt('password'),
-            'remember_token' => str_random(10)
+            'remember_token' => null
         ]);
     }
 }
