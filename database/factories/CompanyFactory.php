@@ -28,8 +28,7 @@ $factory->define(Company::class, function (Faker $faker) {
         'email' => $faker->companyEmail,
         'website' => $faker->url,
         'logo' => $faker->image($filepath, 100, 100, null, false),
-        'user_id' => function () {
-            return factory(User::class)->create()->id;
-        },
+        'user_id' => 1
+
     ];
 });

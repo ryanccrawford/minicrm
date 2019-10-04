@@ -24,8 +24,6 @@ $factory->define(Employee::class, function (Faker $faker) {
         },
         'email' => $faker->safeEmail,
         'phone' => $faker->phoneNumber,
-        'user_id' => function () { // User Who created this employee
-            return factory(User::class)->create()->id;
-        }
+        'user_id' => 2
     ];
 });

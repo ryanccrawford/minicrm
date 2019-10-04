@@ -13,21 +13,16 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //Create an Admin User Account
-        User::create([
+        DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@site.com',
-            'password' => bcrypt('password'),
-            'remember_token' => null
-
+            'password' => bcrypt('password')
         ]);
-
-
         //Create a Manager User Acccount
-        User::create([
+        DB::table('users')->insert([
             'name' => 'Manager',
             'email' => 'manager@site.com',
-            'password' => bcrypt('password'),
-            'remember_token' => null
+            'password' => bcrypt('password')
         ]);
     }
 }
