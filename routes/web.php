@@ -15,10 +15,12 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 // Authentication Routes
+
+//Normal User Login Routes
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
+Route::get('logout', 'Auth\LoginController@wronglogout')->name('wronglogout');
 // Password Reset Routes
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

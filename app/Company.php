@@ -39,9 +39,21 @@ class Company extends Model
         return $this->belongsTo(User::class);
     }
 
+
+    /**
+     * The employees that belong to the user.
+     */
     public function employees()
     {
         return $this->hasMany(Employee::class);
+    }
+
+    /**
+     * Returns the users that belong to the comapany.
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
     }
 
     /**

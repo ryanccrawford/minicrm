@@ -4,7 +4,7 @@
 return [
     // Labels
     'company'       => 'Company',
-    'list'          => 'Company List',
+    'list'          => 'Companies',
     'search'        => 'Search Companies',
     'detail'        => 'Company Detail',
     'select'        => 'Select a Company',

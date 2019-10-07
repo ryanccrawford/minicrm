@@ -16,13 +16,14 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@site.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+
         ]);
         //Create a Manager User Acccount
         DB::table('users')->insert([
             'name' => 'Manager',
             'email' => 'manager@site.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
         ]);
     }
 }

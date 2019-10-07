@@ -1,11 +1,15 @@
-.bg-image-hr {
-    background-image: url("images/view.jpg");
-    background-size: cover;
-}
+/********
+*NAV BAR*
+*********/
 
 .nav-logo {
     width: 32px;
 }
+
+
+/***********
+*LOGIN FORM*
+************/
 
 .form-signin {
     width: 100%;

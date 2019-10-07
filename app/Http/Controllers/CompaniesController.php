@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use App\Company;
 use App\Http\Requests\CompanyCreateRequest;
 use App\Http\Requests\CompanyLogoUploadRequest;
@@ -62,12 +63,14 @@ class CompaniesController extends Controller
      */
     public function show(Company $company)
     {
-        $employees = $company->employees()->where(function ($query) {
+        $employees = $company->employees()->paginate();
+        if (request('q')) {
             $searchQuery = request('q');
-            $query->where('first_name', 'like', '%' . $searchQuery . '%');
-            $query->orWhere('last_name', 'like', '%' . $searchQuery . '%');
-        })->paginate();
-
+            $employees = $company->employees()->where(function ($query) {
+                $query->where('first_name', 'like', '%' . request('q') . '%');
+                $query->orWhere('last_name', 'like', '%' . request('q') . '%');
+            })->paginate();
+        }
         return view('companies.show', compact('company', 'employees'));
     }
 

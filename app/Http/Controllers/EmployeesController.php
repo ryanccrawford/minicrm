@@ -25,9 +25,10 @@ class EmployeesController extends Controller
             $query->where('first_name', 'like', '%' . $searchQuery . '%');
             $query->orWhere('last_name', 'like', '%' . $searchQuery . '%');
         });
-
+        $selectedId = 0;
         if ($companyId = request('company_id')) {
             $employeeQuery->where('company_id', $companyId);
+            $selectedId = $companyId;
         }
 
         $employees = $employeeQuery->with('company')->paginate();
@@ -36,7 +37,7 @@ class EmployeesController extends Controller
             $editableEmployee = Employee::find(request('id'));
         }
 
-        return view('employees.index', compact('employees', 'editableEmployee', 'companyList'));
+        return view('employees.index', compact('employees', 'editableEmployee', 'selectedId', 'companyList'));
     }
 
     /**
@@ -46,7 +47,10 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', new Employee);
+        $selectedId = 0;
+        $companyList = Company::pluck('name', 'id')->all();
+        return view('employees.create', compact('companyList', 'selectedId'));
     }
 
     /**
@@ -71,9 +75,18 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employee $employee)
     {
-        //
+
+        $company = $employee->company();
+        if (request('q')) {
+            $searchQuery = request('q');
+            $employees = $company->employees()->where(function ($query) {
+                $query->where('first_name', 'like', '%' . request('q') . '%');
+                $query->orWhere('last_name', 'like', '%' . request('q') . '%');
+            })->paginate();
+        }
+        return view('employees.show', compact('company', 'employee'));
     }
 
     /**

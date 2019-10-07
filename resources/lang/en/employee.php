@@ -4,7 +4,7 @@
 return [
     // Labels
     'employee'      => 'Employee',
-    'list'          => 'Employee List',
+    'list'          => 'Employees',
     'search'        => 'Search Employee',
     'detail'        => 'Employee Detail',
     'not_found'     => 'Employee not found.',

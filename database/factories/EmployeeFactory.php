@@ -19,9 +19,7 @@ $factory->define(Employee::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'company_id' => function () { // Associated Company
-            return factory(Company::class)->create()->id;
-        },
+        'company_id' => $faker->numberBetween(1, 20),
         'email' => $faker->safeEmail,
         'phone' => $faker->phoneNumber,
         'user_id' => 2

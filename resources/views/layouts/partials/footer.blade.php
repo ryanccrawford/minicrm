@@ -1,6 +1,6 @@
 <div class="container">
     <span class="text-muted">
-        <i class="fa fa-copyright" aria-hidden="true"></i>Copyright <span id="copyyear"></span>
+        Copyright <i class="fa fa-copyright" aria-hidden="true"></i><span id="copyyear">2019</span>
     </span>
 </div>
 
