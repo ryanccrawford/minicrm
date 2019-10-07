@@ -1,27 +1,27 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Company;
 use App\Employee;
 use Faker\Generator as Faker;
-
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
-| Model Factories
+| Employee Factory
 |--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
+| This function uses Faker to generate random Employee data to
+| seed the database.
 */
 
 $factory->define(Employee::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
+        'company_id' => $faker->numberBetween(1, 20),
+        'email' => $faker->safeEmail,
         'phone' => $faker->phoneNumber,
-        'company_id' => rand(1, 20)
+        'user_id' => 2
     ];
 });

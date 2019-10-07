@@ -1,19 +1,18 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\Company;
+use App\User;
 use Faker\Generator as Faker;
 
 
 /*
 |--------------------------------------------------------------------------
-| Model Factories
+| Company Factory
 |--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
+| This function uses Faker to generate random Company data to
+| seed the database.
 */
 
 $factory->define(Company::class, function (Faker $faker) {
@@ -26,9 +25,10 @@ $factory->define(Company::class, function (Faker $faker) {
 
     return [
         'name' => $faker->company,
-        'email' => $faker->unique()->companyEmail,
+        'email' => $faker->companyEmail,
+        'website' => $faker->url,
         'logo' => $faker->image($filepath, 100, 100, null, false),
-        'website' => $faker->url, 
-    ];
+        'user_id' => 1
 
+    ];
 });

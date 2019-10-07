@@ -1,34 +1,41 @@
 # MINI CRM
-Mini CRM in Laravel
+A Mini CRM in Laravel
 
-Hello, to recreate:
+Hello, to install:
 
+bash
 ```
 $ git clone https://github.com/ryanccrawford/minicrm.git
 ```
 
 Then create a MySQL database:
 
+bash
 ```
-mysql> create database ryan_marketingforchange_laravel_crm
+$ mysql -u<user_name> -p<password>
+mysql> create database <database_name>
+mysql> exit
 ```
 
 Then cd into minicrm
 
+bash
 ```
 $ cd minicrm
 ```
 
 Next create an .env file 
 
+bash
 ```
 $touch .env
 ```
 
 Then copy and paste this to the .env you just created
 
+ini
 ```
-APP_NAME='Human Asset Managment'
+APP_NAME='CRM'
 APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
@@ -38,10 +45,10 @@ LOG_CHANNEL=stack
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=ryan_marketingforchange_laravel_crm
-DB_USERNAME=replace_with_user_name
-DB_PASSWORD=repalce_with_password
+DB_PORT=<database_port>
+DB_DATABASE=<database_name>
+DB_USERNAME=<database_username>
+DB_PASSWORD=<database_password>
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
@@ -74,7 +81,3 @@ MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 ```
-
-Before saving the above to your .env file, replace the MySQL database username and password with your own.
-
-Sorry will finish documentation when time is avail...

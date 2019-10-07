@@ -2,6 +2,14 @@
 
 All notable changes to `ignition` will be documented in this file
 
+## 1.9.2 - 2019-10-04
+
+- Fix service provider registration (Fixes #177)
+
+## 1.9.1 - 2019-10-01
+
+- collapse vendor frames on windows fix (#176)
+
 ## 1.9.0 - 2019-09-27
 
 -  add ability to send logs to flare

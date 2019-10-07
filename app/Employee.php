@@ -2,35 +2,51 @@
 
 namespace App;
 
+use App\Company;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 
 class Employee extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * Employee attributes.
      *
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name','email', 'phone', 'company_id'
+        'first_name',
+        'last_name',
+        'company_id',
+        'email',
+        'phone',
+        'user_id'
     ];
+
+    //Pagnation Per Page
+    protected $perPage = 10;
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-       
-    ];
+    protected $hidden = [];
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [
-       
-    ];
+    protected $casts = [];
 }

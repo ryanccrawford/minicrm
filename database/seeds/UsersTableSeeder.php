@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\User;
+
 class UsersTableSeeder extends Seeder
 {
     /**
-     * Seed with Admin and Manager User Acounts database seeds.
+     * Seed with Admin and Manager User Acounts
      *
      * @return void
      */
@@ -16,19 +17,13 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@site.com',
             'password' => bcrypt('password'),
-            'type' => 'admin',
-            
+
         ]);
-
-
         //Create a Manager User Acccount
         DB::table('users')->insert([
             'name' => 'Manager',
             'email' => 'manager@site.com',
             'password' => bcrypt('password'),
-            'type' => 'manager'
         ]);
-
-        
     }
 }

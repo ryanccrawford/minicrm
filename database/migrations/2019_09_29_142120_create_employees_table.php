@@ -13,16 +13,17 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('employees');
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
+            $table->unsignedInteger('company_id');
+            $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->unsignedInteger('user_id');
             $table->timestamp('create_time')->nullable();
             $table->timestamps();
-
-            $table->unsignedInteger('company_id');
         });
 
         Schema::table('employees', function ($table) {
