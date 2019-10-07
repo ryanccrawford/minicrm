@@ -332,4 +332,4 @@ ASALocalRun/
 .vscode/
 .env
 *.sql
-vendor/
+vendor
