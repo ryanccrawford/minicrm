@@ -40,10 +40,11 @@
 </div>
 @else
 <div class="container">
+     <div class="row">
     <div class="card">
        <div class="card-body">
            <div class="row">
-        <div class="col-md-6 p4">
+        <div class="col-md-6 ">
             <h3 class="text-dark">{{ trans('company.edit') }}</h3>
             {!! Form::open() !!}
             {!! Form::model($company, ['route' => ['companies.update', $company],'method' => 'patch']) !!}
@@ -82,6 +83,7 @@
         </div>
         </div>
     </div>
+</div>
     </div>
 @endif
 @endsection

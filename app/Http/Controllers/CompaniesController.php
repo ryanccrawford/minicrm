@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use App\Company;
+use App\User;
 use App\Http\Requests\CompanyCreateRequest;
 use App\Http\Requests\CompanyLogoUploadRequest;
 use App\Http\Requests\CompanyUpdateRequest;
@@ -34,8 +35,15 @@ class CompaniesController extends Controller
     public function create()
     {
         $this->authorize('create', new Company);
+        $managers = User::where(function ($query) {
+            $query->where('name', '=', 'Manager');
+        })->get();
+        $managersList = array();
+        foreach ($managers as $manager) {
+            $managersList[$manager->id] = $manager->name;
+        }
 
-        return view('companies.create');
+        return view('companies.create', compact('managersList'));
     }
 
     /**

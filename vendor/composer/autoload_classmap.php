@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Charts\\numberOfCompanies' => $baseDir . '/app/Charts/numberOfCompanies.php',
     'App\\Company' => $baseDir . '/app/Company.php',
     'App\\CompanyUser' => $baseDir . '/app/CompanyUser.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -1193,6 +1192,7 @@ return array(
     'Illuminate\\Auth\\Middleware\\AuthenticateWithBasicAuth' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Middleware/AuthenticateWithBasicAuth.php',
     'Illuminate\\Auth\\Middleware\\Authorize' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Middleware/Authorize.php',
     'Illuminate\\Auth\\Middleware\\EnsureEmailIsVerified' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Middleware/EnsureEmailIsVerified.php',
+    'Illuminate\\Auth\\Middleware\\RequirePassword' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Middleware/RequirePassword.php',
     'Illuminate\\Auth\\MustVerifyEmail' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/MustVerifyEmail.php',
     'Illuminate\\Auth\\Notifications\\ResetPassword' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php',
     'Illuminate\\Auth\\Notifications\\VerifyEmail' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Notifications/VerifyEmail.php',
@@ -1524,6 +1524,7 @@ return array(
     'Illuminate\\Foundation\\Auth\\Access\\Authorizable' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/Authorizable.php',
     'Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/Access/AuthorizesRequests.php',
     'Illuminate\\Foundation\\Auth\\AuthenticatesUsers' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php',
+    'Illuminate\\Foundation\\Auth\\ConfirmsPasswords' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/ConfirmsPasswords.php',
     'Illuminate\\Foundation\\Auth\\RedirectsUsers' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php',
     'Illuminate\\Foundation\\Auth\\RegistersUsers' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php',
     'Illuminate\\Foundation\\Auth\\ResetsPasswords' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Auth/ResetsPasswords.php',
